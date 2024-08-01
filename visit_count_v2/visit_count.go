@@ -68,7 +68,7 @@ func visitCount(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	counter, err := redisClient.Incr(ctx, "visits").Result()
+	counter, err := redisClient.Incr(ctx, "visits_v2").Result()
 	if err != nil {
 		log.Printf("redis.Int: %v", err)
 		http.Error(w, "Error incrementing visit count", http.StatusInternalServerError)
