@@ -67,7 +67,6 @@ func visitCount(w http.ResponseWriter, r *http.Request) {
 		log.Printf("connect to Redis failed: %v", err)
 		return
 	}
-	defer redisClient.Close()
 
 	counter, err := redisClient.Incr(ctx, "visits").Result()
 	if err != nil {
