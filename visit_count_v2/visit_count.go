@@ -41,6 +41,9 @@ func initRedis() (redisClient *redis.Client, err error) {
 	addr := fmt.Sprintf("%s:%s", redisHost, redisPort)
 	options := &redis.Options{
 		Addr: addr,
+		//Password: "",
+		DB:       0,
+		PoolSize: 10,
 	}
 
 	_redisClient = redis.NewClient(options)
@@ -75,5 +78,5 @@ func visitCount(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	fmt.Fprintf(w, "Visit count: %d", counter)
+	_, _ = fmt.Fprintf(w, "Visit count: %d", counter)
 }
